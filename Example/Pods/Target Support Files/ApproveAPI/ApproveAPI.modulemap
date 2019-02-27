@@ -1,0 +1,6 @@
+framework module ApproveAPI {
+  umbrella header "ApproveAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}

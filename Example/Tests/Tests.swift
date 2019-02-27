@@ -1,5 +1,5 @@
 import XCTest
-import ApproveAPI
+@testable import ApproveAPI
 
 class Tests: XCTestCase {
     
