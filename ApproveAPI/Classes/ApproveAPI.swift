@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ApproveAPIProtocol {
+public protocol ApproveAPIProtocol {
     
     /// Prompt changed
     ///
@@ -24,12 +24,12 @@ protocol ApproveAPIProtocol {
     func approveClient(_ client: ApproveAPI, promptStatusChanged status: PromptStatus)
 }
 
-class ApproveAPI {
+public class ApproveAPI {
     
     // MARK: - Attributes
     
     /// Delegate for receiving data callbacks
-    var delegate: ApproveAPIProtocol?
+    public var delegate: ApproveAPIProtocol?
     
     /// Networking manager
     private var networking: Networking!
@@ -41,7 +41,7 @@ class ApproveAPI {
     /// - Parameters:
     ///   - apiKey: ApproveAPI token.
     ///   - isTestKey: If true, network requests use test key.
-    init(apiKey: String, isTestKey: Bool, delegate: ApproveAPIProtocol? = nil) {
+    public init(apiKey: String, isTestKey: Bool, delegate: ApproveAPIProtocol? = nil) {
         self.networking = Networking(apiKey: apiKey, isTestKey: isTestKey, delegate: self)
         self.delegate = delegate
     }
@@ -53,7 +53,7 @@ class ApproveAPI {
     ///
     /// - Parameter request: `PromptRequest` object containing prompt information.
     /// - Parameter completion: Returns created `Prompt` object and/or an `Error`
-    func sendPrompt(withRequest request: PromptRequest, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
+    public func sendPrompt(withRequest request: PromptRequest, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
         networking.sendPrompt(withRequest: request, completion: completion)
     }
     
@@ -64,7 +64,7 @@ class ApproveAPI {
     /// - Parameter id: The identifier for a pending or completed `Prompt`.
     /// - Parameter longPoll: The request should wait until either the user responds to the approval request, the prompt request expires, or more than 10 minutes pass. Defaults to false.
     /// - Parameter completion: Returns created `Prompt` object and/or an `Error`
-    func retreivePrompt(withId id: String, longPoll: Bool = false, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
+    public func retreivePrompt(withId id: String, longPoll: Bool = false, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
         networking.retreivePrompt(withId: id, longPoll: longPoll, completion: completion)
     }
     
@@ -73,7 +73,7 @@ class ApproveAPI {
     ///
     /// - Parameter id: The identifier for a pending or completed `Prompt`.
     /// - Parameter completion: Returns requested `PromptStatus` object and/or an `Error`
-    func checkPromptStatus(withId id: String, completion: Callbacks.ApproveAPIGetPromptStatusCompletion?) {
+    public func checkPromptStatus(withId id: String, completion: Callbacks.ApproveAPIGetPromptStatusCompletion?) {
         networking.checkPromptStatus(withId: id, completion: completion)
     }
 }

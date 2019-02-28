@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Callbacks {
+public struct Callbacks {
     
     /// Get `Prompt` object completion handler.
-    typealias ApproveAPIGetPromptCompletion = (_ prompt: Prompt?, _ error: Error?) -> Void
+    public typealias ApproveAPIGetPromptCompletion = (_ prompt: Prompt?, _ error: Error?) -> Void
     
     /// Get `PromptStatus` completion handler.
-    typealias ApproveAPIGetPromptStatusCompletion = (_ status: PromptStatus?, _ error: Error?) -> Void
+    public typealias ApproveAPIGetPromptStatusCompletion = (_ status: PromptStatus?, _ error: Error?) -> Void
 }
 
 /// API endpoints
