@@ -3,9 +3,11 @@ import XCTest
 
 class CompletionTests: XCTestCase {
     
-     // MARK: - Attributes
+    // MARK: - Attributes
     
     private let approveClient: ApproveAPI = ApproveAPI(apiKey: Secrets.API_KEY_TEST, isTestKey: true)
+    
+    // MARK: - Lifecycle
     
     override func setUp() {
         super.setUp()
@@ -16,6 +18,8 @@ class CompletionTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    // MARK: - Test Cases
     
     func testSendPrompt() {
         let expectation = XCTestExpectation(description: "Send prompt")
