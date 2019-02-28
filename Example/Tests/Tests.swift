@@ -23,6 +23,7 @@ class CompletionTests: XCTestCase {
     
     func testSendPrompt() {
         let expectation = XCTestExpectation(description: "Send prompt")
+        
         var promptRequest = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Some body...ha ha")
         promptRequest.title = "Money request"
         promptRequest.metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM")
@@ -99,34 +100,4 @@ class CompletionTests: XCTestCase {
         
         wait(for: [expectation], timeout: 3.0)
     }
-    
-    //    func testSendPromptLongPoll() {
-    //        let expectation = XCTestExpectation(description: "Send prompt")
-    //
-    //        var promptRequest = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Some body...ha ha")
-    //        promptRequest.metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM")
-    //        promptRequest.longPoll = true
-    //
-    //        approveClient.sendPrompt(withRequest: promptRequest) { (prompt, error) in
-    //            if let prompt = prompt {
-    //                if let promptId = prompt.id {
-    //                    XCTAssert(promptId.starts(with: "prompt_"), "Prompt ID begins with 'prompt_'")
-    //                }
-    //                else {
-    //                    XCTAssertNotNil(prompt.id, "Prompt ID should not be nil.")
-    //                }
-    //
-    //                XCTAssertNotNil(prompt.sentTime, "Prompt timestamp should not be nil.")
-    //                XCTAssertNotNil(prompt.answer, "Prompt answer should not be nil on send unless `longPoll` is set to false.")
-    //            }
-    //            expectation.fulfill()
-    //        }
-    //
-    //        // User must confirm on receiving side
-    //        wait(for: [expectation], timeout: 10.0)
-    //    }
-}
-
-class DelegateTests: XCTestCase {
-    
 }
