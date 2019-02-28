@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Callbacks {
-    
+
     /// Get `Prompt` object completion handler.
     public typealias ApproveAPIGetPromptCompletion = (_ prompt: Prompt?, _ error: Error?) -> Void
-    
+
     /// Get `PromptStatus` completion handler.
     public typealias ApproveAPIGetPromptStatusCompletion = (_ status: PromptStatus?, _ error: Error?) -> Void
 }
@@ -22,11 +22,11 @@ public struct Callbacks {
 /// - promptRetrieve: `/prompt/id`
 /// - promptStatus: `/prompt/id`
 enum Endpoint {
-    
+
     case root
     case promptRetrieve(id: String)
     case promptStatus(id: String)
-    
+
     var rawValue: String {
         switch self {
         case .root:

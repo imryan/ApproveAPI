@@ -8,14 +8,14 @@
 import Foundation
 
 public protocol ApproveAPIProtocol {
-    
+
     /// Prompt changed
     ///
     /// - Parameters:
     ///   - client: `ApproveAPI` client.
     ///   - prompt: `Prompt` object that was updated.
     func approveClient(_ client: ApproveAPI, promptChanged prompt: Prompt)
-    
+
     /// Prompt status changed
     ///
     /// - Parameters:
@@ -25,17 +25,17 @@ public protocol ApproveAPIProtocol {
 }
 
 public class ApproveAPI {
-    
+
     // MARK: - Attributes
-    
+
     /// Delegate for receiving data callbacks
     public var delegate: ApproveAPIProtocol?
-    
+
     /// Networking manager
     private var networking: Networking!
-    
+
     // MARK: - Initialization
-    
+
     /// Initialization
     ///
     /// - Parameters:
@@ -45,9 +45,9 @@ public class ApproveAPI {
         self.networking = Networking(apiKey: apiKey, isTestKey: isTestKey, delegate: self)
         self.delegate = delegate
     }
-    
+
     // MARK: - Functions
-    
+
     /// Creates a prompt and pushes it to the user
     /// (sends via email, sms, or other supported protocols).
     ///
@@ -56,7 +56,7 @@ public class ApproveAPI {
     public func sendPrompt(withRequest request: PromptRequest, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
         networking.sendPrompt(withRequest: request, completion: completion)
     }
-    
+
     /// The Prompt object if the call succeeds. This request supports long polling
     /// with the the `longPoll` parameter. The answer field may or not be null depending on
     /// if the user has responded to the prompt or not.
@@ -67,7 +67,7 @@ public class ApproveAPI {
     public func retreivePrompt(withId id: String, longPoll: Bool = false, completion: Callbacks.ApproveAPIGetPromptCompletion?) {
         networking.retreivePrompt(withId: id, longPoll: longPoll, completion: completion)
     }
-    
+
     /// This is a convenience endpoint that doesn't require authentication
     /// for checking if a particular prompt has been answered or not.
     ///
@@ -79,12 +79,12 @@ public class ApproveAPI {
 }
 
 extension ApproveAPI: NetworkingProtocol {
-    
+
     func networkingClient(_ client: Networking, promptChanged prompt: Prompt?) {
         guard let prompt = prompt else { return }
         delegate?.approveClient(self, promptChanged: prompt)
     }
-    
+
     func networkingClient(_ client: Networking, promptStatusChanged status: PromptStatus?) {
         guard let status = status else { return }
         delegate?.approveClient(self, promptStatusChanged: status)
