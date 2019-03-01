@@ -40,8 +40,8 @@ public struct PromptStatus: Codable {
 
     // MARK: - Attributes
 
-    public let isAnswered: Bool
-    public let isExpired: Bool
+    public let isAnswered: Bool?
+    public let isExpired: Bool?
 
     private enum CodingKeys: String, CodingKey {
         case isAnswered = "is_answered"
