@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     // MARK: - Attributes
     
     private lazy var approveClient: ApproveAPI = {
-        let client = ApproveAPI(apiKey: "sk_test_4JDXJkvb7BXOyfKythcuN9", isTestKey: true, delegate: self)
+        let client = ApproveAPI(apiKey: "", isTestKey: true, delegate: self)
         return client
     }()
     
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     
     private func sendPromptDelegate() {
         // Create Prompt request object
-        var request = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Demo body message.")
+        var request = PromptRequest(userAddress: "someone@email.com", body: "Demo body message.")
         request.longPoll = true
         
         // Will notify via delegate
