@@ -1,4 +1,4 @@
-# ApproveAPI
+# ✅ ApproveAPI
 
 [![CI Status](https://img.shields.io/travis/imryan/ApproveAPI.svg?style=flat)](https://travis-ci.org/imryan/ApproveAPI)
 [![Version](https://img.shields.io/cocoapods/v/ApproveAPI.svg?style=flat)](https://cocoapods.org/pods/ApproveAPI)
