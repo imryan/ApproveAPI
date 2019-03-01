@@ -78,6 +78,8 @@ public class ApproveAPI {
     }
 }
 
+// MARK: - NetworkingProtocol
+
 extension ApproveAPI: NetworkingProtocol {
 
     func networkingClient(_ client: Networking, promptChanged prompt: Prompt?) {

@@ -9,16 +9,10 @@
 Pod::Spec.new do |s|
     s.name             = 'ApproveAPI'
     s.version          = '0.1.0'
-    s.summary          = 'A short description of ApproveAPI.'
-    
-    # This description is used to generate tags and improve search results.
-    #   * Think: What does it do? Why did you write it? What is the focus?
-    #   * Try to keep it short, snappy and to the point.
-    #   * Write the description between the DESC delimiters below.
-    #   * Finally, don't worry about the indent, CocoaPods strips it!
-    
+    s.summary          = 'ApproveAPI for iOS.'
+
     s.description      = <<-DESC
-    TODO: Add long description of the pod here.
+    A simple API for iOS to request a user's real-time approval on anything via email, SMS + mobile push.
     DESC
     
     s.homepage         = 'https://github.com/imryan/ApproveAPI'

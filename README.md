@@ -22,7 +22,7 @@ pod 'ApproveAPI'
 
 ## Author
 
-imryan, notryancohen@gmail.com
+Ryan Cohen, notryancohen@gmail.com
 
 ## License
 

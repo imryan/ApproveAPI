@@ -24,7 +24,7 @@ class CompletionTests: XCTestCase {
     func testSendPrompt() {
         let expectation = XCTestExpectation(description: "Send prompt")
 
-        var promptRequest = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Some body...ha ha")
+        var promptRequest = PromptRequest(userAddress: "@gmail.com", body: "Some body...ha ha")
         promptRequest.title = "Money request"
         promptRequest.metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM")
 
@@ -53,7 +53,7 @@ class CompletionTests: XCTestCase {
     func testRetrievePrompt() {
         let expectation = XCTestExpectation(description: "Retrieve prompt")
 
-        approveClient.retreivePrompt(withId: "prompt_dNaVoPLVHGrSlyxlRCk3z8") { (prompt, error) in
+        approveClient.retreivePrompt(withId: "") { (prompt, error) in
             if let prompt = prompt {
                 if let promptId = prompt.id {
                     XCTAssert(promptId.starts(with: "prompt_"), "Prompt ID begins with 'prompt_'")
@@ -91,7 +91,7 @@ class CompletionTests: XCTestCase {
     func testCheckPromptStatus() {
         let expectation = XCTestExpectation(description: "Send prompt")
 
-        approveClient.checkPromptStatus(withId: "prompt_dNaVoPLVHGrSlyxlRCk3z8") { (status, error) in
+        approveClient.checkPromptStatus(withId: "") { (status, error) in
             XCTAssertNotNil(status, "Status must not be nil.")
             XCTAssertNil(error, "Error should be nil.")
 

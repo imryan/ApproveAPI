@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     // MARK: - Attributes
     
     private lazy var approveClient: ApproveAPI = {
-        let client = ApproveAPI(apiKey: "sk_test_4JDXJkvb7BXOyfKythcuN9", isTestKey: true, delegate: self)
+        let client = ApproveAPI(apiKey: "", isTestKey: true, delegate: self)
         return client
     }()
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         metadata.browser = UIDevice.current.model
         
         // Create Prompt request object
-        var request = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Demo body message.")
+        var request = PromptRequest(userAddress: "you@email.com", body: "Demo body message.")
         request.title = "Optional prompt title"
         request.metadata = metadata
         //request.longPoll = false

@@ -11,5 +11,5 @@ import Foundation
 struct Secrets {
 
     /// Le test key
-    static let API_KEY_TEST: String = "sk_test_4JDXJkvb7BXOyfKythcuN9"
+    static let API_KEY_TEST: String = ""
 }

@@ -2,17 +2,20 @@
 //  AppDelegate.swift
 //  ApproveAPI
 //
-//  Created by imryan on 02/27/2019.
-//  Copyright (c) 2019 imryan. All rights reserved.
+//  Created by Ryan Cohen on 02/27/2019.
+//  Copyright (c) 2019 Ryan Cohen. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // MARK: - Attributes
 
     var window: UIWindow?
-
+    
+    // MARK: - Lifecycle
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -40,7 +43,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-
