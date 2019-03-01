@@ -20,6 +20,82 @@ it, simply add the following line to your Podfile:
 pod 'ApproveAPI'
 ```
 
+## Usage
+
+#### Create ApproveAPI client with API key
+```swift
+let approveClient = ApproveAPI(apiKey: "your-api-key", isTestKey: true, delegate: nil)
+```
+
+#### Send a Prompt
+```swift
+// Create metadata
+let metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM")
+metadata.browser = UIDevice.current.model
+
+// Create Prompt request object
+var request = PromptRequest(userAddress: "you@email.com", body: "Demo body message.")
+request.title = "Optional prompt title"
+request.metadata = metadata
+
+// Send prompt to provided user address
+approveClient.sendPrompt(withRequest: request) { (prompt, error) in
+    guard let promptId = prompt?.id, error == nil else {
+        debugPrint("Error:", error ?? "N/A")
+        return
+    }
+
+    debugPrint("Prompt Send:", prompt ?? "None")
+}
+```
+
+#### Retrieve a Prompt
+```swift
+approveClient.retreivePrompt(withId: "prompt_id") { (prompt, error) in
+    guard let promptId = prompt?.id, error == nil else {
+        debugPrint("Error:", error ?? "N/A")
+        return
+    }
+
+    debugPrint("Prompt Retrieval:", prompt ?? "None")
+}
+```
+
+#### Get Prompt status
+```swift
+approveClient.checkPromptStatus(withId: "prompt_id") { (status, error) in
+    guard let status = status, error == nil else {
+        debugPrint("Error:", error ?? "N/A")
+        return
+    }
+
+    debugPrint("Prompt Status:", status)
+}
+```
+
+#### Send prompt (with delegate response)
+```swift
+// Create Prompt request object
+var request = PromptRequest(userAddress: "someone@email.com", body: "Demo body message.")
+request.longPoll = true // Wait for user response
+
+// Will notify via delegate
+approveClient.delegate = self // Can also set on init()
+approveClient.sendPrompt(withRequest: request, completion: nil)
+```
+```swift
+extension ViewController: ApproveAPIProtocol {
+
+    func approveClient(_ client: ApproveAPI, promptChanged prompt: Prompt) {
+        debugPrint("Prompt changed:", prompt)
+    }
+
+    func approveClient(_ client: ApproveAPI, promptStatusChanged status: PromptStatus) {
+        debugPrint("Status changed:", status)
+    }
+}
+```
+
 ## Author
 
 Ryan Cohen, notryancohen@gmail.com
