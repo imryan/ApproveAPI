@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     
     private func sendPromptDelegate() {
         // Create Prompt request object
-        var request = PromptRequest(userAddress: "notryancohen@gmail.com", body: "Demo body message.")
+        var request = PromptRequest(userAddress: "someone@email.com", body: "Demo body message.")
         request.longPoll = true
         
         // Will notify via delegate
