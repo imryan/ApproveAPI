@@ -36,7 +36,7 @@ let metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM"
 metadata.browser = UIDevice.current.model
 
 // Create Prompt request object
-var request = PromptRequest(userAddress: "you@email.com", body: "Demo body message.")
+var request = PromptRequest(userType: .email("someone@email.com"), body: "Demo body message.")
 request.title = "Optional prompt title"
 request.metadata = metadata
 
@@ -78,7 +78,7 @@ approveClient.checkPromptStatus(withId: "prompt_id") { (status, error) in
 #### Send prompt (with delegate response)
 ```swift
 // Create Prompt request object
-var request = PromptRequest(userAddress: "someone@email.com", body: "Demo body message.")
+var request = PromptRequest(userType: .email("someone@email.com"), body: "Demo body message.")
 request.longPoll = true // Wait for user response
 
 // Will notify via delegate
