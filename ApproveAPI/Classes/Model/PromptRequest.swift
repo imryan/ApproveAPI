@@ -65,14 +65,11 @@ public struct PromptRequest: Codable {
     public var metadata: AnswerMetadata? = nil
     
     private enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case body = "body"
-        case user = "user"
+        case title, body, user, metadata
         case expirationTimeSeconds = "expires_in"
         case approveButtonText = "approve_text"
         case rejectButtonText = "reject_text"
         case longPoll = "long_poll"
-        case metadata = "metadata"
     }
     
     // MARK: - Initialization

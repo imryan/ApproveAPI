@@ -35,10 +35,9 @@ public struct Prompt: Codable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id, answer
         case sentTime = "sent_at"
         case isExpired = "is_expired"
-        case answer = "answer"
     }
     
     // TODO: Add sentTime as Date
@@ -74,9 +73,7 @@ public struct PromptAnswer: Codable {
     public let metadata: AnswerMetadata?
     
     private enum CodingKeys: String, CodingKey {
-        case result = "result"
-        case time = "time"
-        case metadata = "metadata"
+        case result, time, metadata
     }
 }
 
@@ -100,10 +97,8 @@ public class AnswerMetadata: Codable {
     public var operatingSystem: String?
     
     private enum CodingKeys: String, CodingKey {
-        case location = "location"
-        case time = "time"
+        case location, time, browser
         case ipAddress = "ip_address"
-        case browser = "browser"
         case operatingSystem = "operating_system"
     }
 }
