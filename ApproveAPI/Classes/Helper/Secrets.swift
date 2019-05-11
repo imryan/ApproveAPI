@@ -10,6 +10,6 @@ import Foundation
 
 struct Secrets {
 
-    /// Le test key
+    /// Test key
     static let API_KEY_TEST: String = ""
 }
