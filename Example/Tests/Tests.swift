@@ -85,7 +85,6 @@ class CompletionTests: XCTestCase {
         var promptRequest = PromptRequest(userType: .slack(user: "general"), body: "Demo body message.")
         promptRequest.title = "Money request"
         promptRequest.metadata = AnswerMetadataPost(location: "New York, NY", timestamp: "9:41 AM")
-        debugPrint("req:", promptRequest.dictionary)
         
         approveClient.sendPrompt(withRequest: promptRequest) { (prompt, error) in
             if let prompt = prompt {
@@ -177,7 +176,7 @@ class CompletionTests: XCTestCase {
     }
     
     func testCheckPromptStatus() {
-        let expectation = XCTestExpectation(description: "Send prompt")
+        let expectation = XCTestExpectation(description: "Check prompt status")
         
         approveClient.checkPromptStatus(withId: "") { (status, error) in
             XCTAssertNotNil(status, "Status must not be nil.")
