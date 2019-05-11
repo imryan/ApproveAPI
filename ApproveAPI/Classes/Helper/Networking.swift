@@ -16,10 +16,10 @@ protocol NetworkingProtocol {
 class Networking {
 
     // MARK: - Attributes
-    
+
     private enum RequestError: Error, LocalizedError {
         case error(message: String)
-        
+
         var errorDescription: String? {
             switch self {
             case .error(let message):
@@ -112,7 +112,7 @@ extension Networking {
     // MARK: - Get
 
     private func get(_ endpoint: Endpoint, parameters: Parameters? = nil, needsAuthentication: Bool = true,
-        completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
+                     completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
 
         var headers: HTTPHeaders = [:]
 
@@ -126,7 +126,7 @@ extension Networking {
         }
 
         Alamofire.request(endpoint.rawValue, method: .get, parameters: parameters,
-            encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
+                          encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
 
             completion(dataResponse.data, dataResponse.error)
         }
@@ -135,7 +135,7 @@ extension Networking {
     // MARK: - Post
 
     private func post(_ endpoint: Endpoint, parameters: Parameters? = nil,
-        completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
+                      completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
 
         guard let apiKeyBase64 = apiKeyBase64 else { return }
 
@@ -145,17 +145,17 @@ extension Networking {
         ]
 
         Alamofire.request(endpoint.rawValue, method: .post, parameters: parameters,
-            encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
-                
-                if let data = dataResponse.data,
-                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
-                    if let errorMessage = json["error"] as? String {
-                        let error: RequestError = .error(message: errorMessage)
-                        completion(nil, error)
-                        return
-                    }
+                          encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
+
+            if let data = dataResponse.data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
+                if let errorMessage = json["error"] as? String {
+                    let error: RequestError = .error(message: errorMessage)
+                    completion(nil, error)
+                    return
                 }
-                
+            }
+
             completion(dataResponse.data, dataResponse.error)
         }
     }
