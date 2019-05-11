@@ -48,7 +48,10 @@ public struct PromptStatus: Codable {
     
     // MARK: - Attributes
     
+    /// Was the Prompt answered
     public let isAnswered: Bool?
+    
+    /// Has the Prompt expired
     public let isExpired: Bool?
     
     private enum CodingKeys: String, CodingKey {
