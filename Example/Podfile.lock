@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (4.8.1)
-  - ApproveAPI (0.1.0):
+  - Alamofire (4.8.2)
+  - ApproveAPI (1.0.0):
     - Alamofire
 
 DEPENDENCIES:
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  ApproveAPI: 1361702db3ccc6d29865cdb2ffc39a546bc3c1b9
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  ApproveAPI: d1c0d49b90e4a5950fd19c7e013f6c79e6491e41
 
 PODFILE CHECKSUM: 7d00e41424efc0988cb8d3716fff8115b92fd52e
 

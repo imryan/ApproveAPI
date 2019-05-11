@@ -148,7 +148,7 @@ extension Networking {
                           encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
 
             if let data = dataResponse.data,
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 if let errorMessage = json["error"] as? String {
                     let error: RequestError = .error(message: errorMessage)
                     completion(nil, error)
