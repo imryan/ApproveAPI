@@ -16,6 +16,17 @@ protocol NetworkingProtocol {
 class Networking {
 
     // MARK: - Attributes
+    
+    private enum RequestError: Error, LocalizedError {
+        case error(message: String)
+        
+        var errorDescription: String? {
+            switch self {
+            case .error(let message):
+                return message
+            }
+        }
+    }
 
     var delegate: NetworkingProtocol?
 
@@ -135,7 +146,16 @@ extension Networking {
 
         Alamofire.request(endpoint.rawValue, method: .post, parameters: parameters,
             encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
-
+                
+                if let data = dataResponse.data,
+                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
+                    if let errorMessage = json["error"] as? String {
+                        let error: RequestError = .error(message: errorMessage)
+                        completion(nil, error)
+                        return
+                    }
+                }
+                
             completion(dataResponse.data, dataResponse.error)
         }
     }

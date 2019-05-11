@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         metadata.browser = UIDevice.current.model
         
         // Create Prompt request object
-        var request = PromptRequest(userAddress: "you@email.com", body: "Demo body message.")
+        var request = PromptRequest(userType: .email("you@email.com"), body: "Demo body message.")
         request.title = "Optional prompt title"
         request.metadata = metadata
         //request.longPoll = false
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         // Send prompt to provided user address
         approveClient.sendPrompt(withRequest: request) { (prompt, error) in
             guard let promptId = prompt?.id, error == nil else {
-                debugPrint("Error:", error ?? "N/A")
+                debugPrint("Error:", error?.localizedDescription ?? "N/A")
                 return
             }
             
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     private func retrievePrompt(id: String) {
         approveClient.retreivePrompt(withId: id) { (prompt, error) in
             guard let promptId = prompt?.id, error == nil else {
-                debugPrint("Error:", error ?? "N/A")
+                debugPrint("Error:", error?.localizedDescription ?? "N/A")
                 return
             }
             
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     private func checkPromptStatus(id: String) {
         approveClient.checkPromptStatus(withId: id) { (status, error) in
             guard let status = status, error == nil else {
-                debugPrint("Error:", error ?? "N/A")
+                debugPrint("Error:", error?.localizedDescription ?? "N/A")
                 return
             }
             
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     
     private func sendPromptDelegate() {
         // Create Prompt request object
-        var request = PromptRequest(userAddress: "someone@email.com", body: "Demo body message.")
+        var request = PromptRequest(userType: .email("you@email.com"), body: "Demo body message.")
         request.longPoll = true
         
         // Will notify via delegate
@@ -80,8 +80,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //sendPrompt()
-        //sendPromptDelegate()
+        // sendPrompt()
+        // sendPromptDelegate()
     }
 }
 
