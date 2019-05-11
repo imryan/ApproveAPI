@@ -291,7 +291,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ApproveAPI_Example/Pods-ApproveAPI_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ApproveAPI_Example/Pods-ApproveAPI_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ApproveAPI/ApproveAPI.framework",
 			);
@@ -304,7 +304,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ApproveAPI_Example/Pods-ApproveAPI_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ApproveAPI_Example/Pods-ApproveAPI_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C5BCB5DCF9639F7813B7C8C0 /* [CP] Check Pods Manifest.lock */ = {
